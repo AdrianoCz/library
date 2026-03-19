@@ -1,4 +1,57 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: rgb(20, 20, 20);
+    position: relative;
+}
+form{
+    margin: auto;
+    z-index: 2;
+    position: absolute;
+    left: 20%;
+    right: 20%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: clamp(20ch, 50vw, 30ch);
+    padding: 2rem;
+    background-color: rgb(34, 34, 34);
+    border: 2px solid white;
+    border-radius: 1rem;
+    align-items: center;
+}
+form::after{
+    height: 10000000px;
+    width: 100000000px;
+    backdrop-filter: blur(25px);
+}
+fieldset{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: none;
+    color: white;    
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+input[type="text"]{
+    --webkit-appearance: none;
+    color: rgba(255, 255, 255, 0.486);
+    background-color: rgb(27, 27, 27);
+    outline: none;
+    border: 2px solid rgba(255, 255, 255, 0.233);
+    border-radius: 100rem;
+    height: 1.5rem;
+    padding: 0 1rem;
+}
+.addBook{
+    width: 5rem;
+    margin-top: 1rem;
+    color: white;
+    outline: none;
+    border-radius: 1rem;
+    border: 2px solid white;
+    height: 2rem;
+    background-color: rgb(27, 27, 27);
 }
