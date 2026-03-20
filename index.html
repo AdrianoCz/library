@@ -6,9 +6,16 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
   </head>
-  <body>
+
+  <body>  
+    <div id="blur" class=""></div>
+    <nav>
+    <label for="addBook">Add book</label>
+    <div onclick="form.classList.toggle('hidden'); blurred.classList.toggle('blur')" id="addBook" name="addBook" class="plusButton">+</div>
     
-    <form action="">
+  </nav>
+  
+    <form class="hidden" action="">
       <fieldset> 
         <legend>Add a book</legend>
         <label for="name"></label><input name="name" placeholder="name" class="info" id="name" type="text">
@@ -16,7 +23,7 @@
         <label for="pages"></label><input name="pages" placeholder="pages" class="info" id="pages" type="text">
         <label for="year"></label><input name="year" placeholder="release year" class="info" id="year" type="text">
       </fieldset>
-      <button class="addBook" onclick="addBookToLibrary()">Add book</button>
+      <button class="addBook" onclick="addBookToLibrary(); form.classList.toggle('hidden');blurred.classList.toggle('blur')">Add book</button>
     </form>
     <section>
       <div class="library"></div>
