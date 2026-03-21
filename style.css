@@ -107,7 +107,6 @@ section{
     grid-template-rows: repeat(2,minmax(27ch,max-content));
     row-gap: 1rem;
     column-gap: 1rem;
-    
 }
 .book{
     padding: 0.5rem;
@@ -130,12 +129,4 @@ section{
     justify-content: center;
     align-items: center;
     gap: 1rem;
-}
-@keyframes blur {
-    from {
-            backdrop-filter: blur(0px);
-    }
-    to{
-            backdrop-filter: blur(10px);
-    }
 }

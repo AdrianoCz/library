@@ -1,3 +1,4 @@
+const library = document.querySelector(".library");
 const myLibrary = [];
 const form = document.querySelector("form");
 const blurred = document.getElementById("blur");
@@ -36,10 +37,8 @@ function clearForm() {
 }
 
 function displayLibrary() {
-  const library = document.querySelector(".library");
-  library.innerHTML = "";
-
   for (let i = 0; i < myLibrary.length; i++) {
+    if(document.getElementById(myLibrary[i].id) == null){
     const book = document.createElement("div");
     const name = document.createElement("h1");
     const info = document.createElement("div");
@@ -51,15 +50,18 @@ function displayLibrary() {
     const readStatus = document.createElement("button");
     const buttons = document.createElement("div");
 
+    book.id = myLibrary[i].id;
     buttons.classList.add("buttons");
     book.classList.add("book");
     info.classList.add("info");
     remove.classList.add("addBook");
     readStatus.classList.add("addBook");
+    readStatus.classList.add("readStatus");
+    read.classList.add("read");
 
     remove.innerText = "Remove";
-    remove.id = myLibrary[i].id;
-    remove.setAttribute("onclick", "removeBook(event.target.id)");
+    remove.setAttribute("name", myLibrary[i].id);
+    remove.setAttribute("onclick", "removeBook(event.target.name)");
 
     readStatus.addEventListener("click", (e) => {
       toggleRead(e.target);
@@ -74,7 +76,7 @@ function displayLibrary() {
       ? "Mark as unread"
       : "Mark as Read";
     read.innerText = myLibrary[i].read ? "Read" : "Not read";
-    read.setAttribute("style", myLibrary[i].read ? "color:green": "color:red");
+    read.setAttribute("style", myLibrary[i].read ? "color:green" : "color:red");
 
     info.appendChild(pages);
     info.appendChild(author);
@@ -88,14 +90,26 @@ function displayLibrary() {
     library.appendChild(book);
   }
 }
+}
 
 function toggleRead(id) {
   myLibrary.forEach((element) => {
     if (element.id == id.name) {
       element.read = !element.read;
+
+      const book = document.getElementById(id.name);
+      const read = book.querySelector(".read");
+      const readStatus = book.querySelector(".readStatus");
+      readStatus.innerText = element.read
+        ? "Mark as unread"
+        : "Mark as Read";
+      read.innerText = element.read ? "Read" : "Not read";
+      read.setAttribute(
+        "style",
+        element.read ? "color:green" : "color:red",
+      );
     }
   });
-  displayLibrary();
 }
 
 function removeBook(id) {
@@ -104,5 +118,6 @@ function removeBook(id) {
       myLibrary.splice(i, 1);
     }
   });
-  displayLibrary();
+  const book = document.getElementById(id);
+  library.removeChild(book);
 }
