@@ -119,5 +119,6 @@ function removeBook(id) {
     }
   });
   const book = document.getElementById(id);
-  library.removeChild(book);
+  book.addEventListener("animationend",()=>{library.removeChild(book);})
+  book.classList.add("removed")
 }
